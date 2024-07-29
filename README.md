@@ -26,8 +26,6 @@ A web application, a platform for teaching all educational levels and solving te
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
 
-<br/>
-
 # 🚀 Features
 
 ## Any User
