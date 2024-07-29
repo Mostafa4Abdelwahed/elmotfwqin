@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: "Tajawal", sans-serif;
+    scroll-behavior: smooth;
+    /* transition: 0.3s all ease-in-out; */
+}
+.slick-prev:before, .slick-next:before {
+    font-size: 30px !important;
+    opacity: .75 !important;
+    color: #28A745 !important;
+    background: #fff !important;
+    border-radius: 30px !important;
+}
+[dir='rtl'] .slick-prev {
+    right: 0px;
+    left: auto;
+    z-index: 49;
+}
+[dir='rtl'] .slick-next {
+    left: 0px;
+    left: auto;
+    z-index: 49;
+}
+.side-link.active > div{
+    background-color: #28A745;
+    color: #fff;
+}
+.plyr--video{
+    width: 100% !important;
+    background: #28A745 !important;
+    border-radius: 15px;
+    margin: auto;
+}
+@media(min-width: 768px){
+    .plyr--video{
+        height: 400px;
+    }
+}
+.plyr__video-wrapper{
+    background: transparent;
+}
+
+/* Quiz Styles */
+.react-quiz-container {
+    color: #000;
+    padding: 26px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    /* width: 100% !important; */
+    max-width: none !important;
+    margin: 22px 0px !important;
+}
+.filter-dropdown-select {
+    height: auto !important;
+}
+.react-quiz-container .quiz-result-filter{
+    width: auto !important;
+}
+.filter-dropdown-select:after {
+    left: 17px !important;
+    top: 52% !important;
+}
+.react-quiz-container .startQuizWrapper .startQuizBtn {
+    width: 100% !important;
+    background-color: #28A745 !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    border-radius: 5px !important
+}
+
+.nextQuestionBtn.btn {
+    border: 1px solid #eee !important;
+    background-color: #28A745 !important;
+    color: #fff !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 32px !important;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}

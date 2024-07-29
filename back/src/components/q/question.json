@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_q_questions",
+  "info": {
+    "displayName": "question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "option1": {
+      "type": "string",
+      "required": true
+    },
+    "option2": {
+      "type": "string",
+      "required": true
+    },
+    "option3": {
+      "type": "string",
+      "required": true
+    },
+    "option4": {
+      "type": "string",
+      "required": true
+    },
+    "correctAnswer": {
+      "type": "integer",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
