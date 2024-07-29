@@ -14,7 +14,8 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "image": {
       "type": "media",
@@ -26,8 +27,9 @@
     },
     "levels": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::level.level"
+      "relation": "manyToMany",
+      "target": "api::level.level",
+      "mappedBy": "languages"
     },
     "teachers": {
       "type": "relation",

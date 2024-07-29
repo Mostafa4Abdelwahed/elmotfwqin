@@ -4,23 +4,32 @@
   "info": {
     "singularName": "lesson",
     "pluralName": "lessons",
-    "displayName": "lesson"
+    "displayName": "lesson",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "link": {
+    "title": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
-    "unity": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "videos": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::unity.unity",
-      "inversedBy": "lessons"
+      "relation": "oneToMany",
+      "target": "api::video.video",
+      "mappedBy": "lesson"
     }
   }
 }

@@ -9,53 +9,53 @@ const Subjects = () => {
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 pb-10">
         <Card
           title="عربي"
-          thumbnail="https://dummyimage.com/400x400"
-          link="arabic/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="arabic/units"
         />
         <Card
           title="فيزياء"
-          thumbnail="https://dummyimage.com/400x400"
-          link="physics/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="physics/units"
         />
         <Card
           title="كيمياء"
-          thumbnail="https://dummyimage.com/400x400"
-          link="chemistry/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="chemistry/units"
         />
         <Card
           title="احياء"
-          thumbnail="https://dummyimage.com/400x400"
-          link="alive/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="alive/units"
         />
         <Card
           title="تاريخ"
-          thumbnail="https://dummyimage.com/400x400"
-          link="date/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="date/units"
         />
         <Card
           title="جغرافيا"
-          thumbnail="https://dummyimage.com/400x400"
-          link="geography/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="geography/units"
         />
         <Card
           title="فرنساوي"
-          thumbnail="https://dummyimage.com/400x400"
-          link="french/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="french/units"
         />
         <Card
           title="انجليزي"
-          thumbnail="https://dummyimage.com/400x400"
-          link="english/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="english/units"
         />
         <Card
           title="رياضة"
-          thumbnail="https://dummyimage.com/400x400"
-          link="math/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="math/units"
         />
         <Card
           title="فلسفة"
-          thumbnail="https://dummyimage.com/400x400"
-          link="philosophy/teachers"
+          thumbnail="https://l.top4top.io/p_3132a0bx51.png"
+          link="philosophy/units"
         />
       </div>
     </Container>

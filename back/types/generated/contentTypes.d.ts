@@ -741,6 +741,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::quiz.quiz'
     >;
+    views: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::lesson.lesson'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -817,11 +822,11 @@ export interface ApiLanguageLanguage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     image: Attribute.Media<'images'> & Attribute.Required;
     levels: Attribute.Relation<
       'api::language.language',
-      'oneToMany',
+      'manyToMany',
       'api::level.level'
     >;
     teachers: Attribute.Relation<
@@ -853,16 +858,18 @@ export interface ApiLessonLesson extends Schema.CollectionType {
     singularName: 'lesson';
     pluralName: 'lessons';
     displayName: 'lesson';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    link: Attribute.String & Attribute.Required & Attribute.Unique;
-    unity: Attribute.Relation<
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    videos: Attribute.Relation<
       'api::lesson.lesson',
-      'manyToOne',
-      'api::unity.unity'
+      'oneToMany',
+      'api::video.video'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -895,6 +902,11 @@ export interface ApiLevelLevel extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
+    languages: Attribute.Relation<
+      'api::level.level',
+      'manyToMany',
+      'api::language.language'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1018,12 +1030,8 @@ export interface ApiUnityUnity extends Schema.CollectionType {
       'oneToOne',
       'api::level.level'
     >;
-    lessons: Attribute.Relation<
-      'api::unity.unity',
-      'oneToMany',
-      'api::lesson.lesson'
-    >;
     quiz: Attribute.Relation<'api::unity.unity', 'oneToOne', 'api::quiz.quiz'>;
+    Term2: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1035,6 +1043,42 @@ export interface ApiUnityUnity extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::unity.unity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVideoVideo extends Schema.CollectionType {
+  collectionName: 'videos';
+  info: {
+    singularName: 'video';
+    pluralName: 'videos';
+    displayName: 'video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    link: Attribute.String & Attribute.Required;
+    lesson: Attribute.Relation<
+      'api::video.video',
+      'manyToOne',
+      'api::lesson.lesson'
+    >;
+    teacherName: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video.video',
       'oneToOne',
       'admin::user'
     > &
@@ -1066,6 +1110,7 @@ declare module '@strapi/types' {
       'api::quiz.quiz': ApiQuizQuiz;
       'api::teacher.teacher': ApiTeacherTeacher;
       'api::unity.unity': ApiUnityUnity;
+      'api::video.video': ApiVideoVideo;
     }
   }
 }

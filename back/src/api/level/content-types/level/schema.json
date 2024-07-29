@@ -16,6 +16,12 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "languages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::language.language",
+      "inversedBy": "levels"
     }
   }
 }

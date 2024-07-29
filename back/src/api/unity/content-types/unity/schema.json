@@ -40,17 +40,16 @@
       "relation": "oneToOne",
       "target": "api::level.level"
     },
-    "lessons": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::lesson.lesson",
-      "mappedBy": "unity"
-    },
     "quiz": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::quiz.quiz",
       "mappedBy": "unity"
+    },
+    "Term2": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

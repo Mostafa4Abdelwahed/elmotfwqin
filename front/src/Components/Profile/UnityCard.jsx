@@ -17,7 +17,7 @@ const UnityCard = ({ title, desc, saved }) => {
           {desc}
         </p>
         <Link
-          to="/profile/arabic/teachers/elmodarsh/units/elwehda-elolah/1"
+          to="/profile/arabic/units/elwehda-alolah"
           className="bg-primary hover:bg-primary/70 shadow-sm rounded-full py-2 px-5 text-xs text-white font-semibold"
         >
           عرض المزيد

@@ -93,6 +93,11 @@
       "relation": "oneToMany",
       "target": "api::quiz.quiz",
       "mappedBy": "user"
+    },
+    "views": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lesson.lesson"
     }
   }
 }
