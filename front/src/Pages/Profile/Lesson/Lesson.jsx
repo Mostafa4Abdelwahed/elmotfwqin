@@ -17,6 +17,9 @@ const Lesson = () => {
       },
     ],
   };
+  if (isLoading) {
+    return <h1 className="text-2xl text-center mt-5">جاري التحميل...</h1>
+  }
   console.log(lesson?.data?.attributes?.VideoId);
   return (
     <div className="pt-7 relative mx-auto">
