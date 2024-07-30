@@ -25,16 +25,30 @@
         "images"
       ]
     },
-    "levels": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::level.level",
-      "mappedBy": "languages"
+    "secondary1": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     },
-    "teachers": {
+    "secondary2": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "secondary3": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "unities": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::teacher.teacher",
+      "target": "api::unity.unity",
       "mappedBy": "language"
     }
   }

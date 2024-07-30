@@ -10,8 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-const LessonCard = ({ title, desc, unity }) => {
+const LessonCard = ({ lesson }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log(lesson);
   return (
     <>
       <div onClick={onOpen} className="border-2 rounded-lg shadow-sm">
@@ -19,16 +20,20 @@ const LessonCard = ({ title, desc, unity }) => {
           <div>
             <img
               className="h-40 rounded w-full object-cover object-center"
-              src="https://dummyimage.com/720x400"
-              alt="content"
+              src={`${import.meta.env.VITE_SERVER_URL}${
+                lesson?.attributes?.image?.data?.attributes?.url
+              }`}
+              alt="thumbnail"
             />
           </div>
           <div className="p-4">
             <h3 className="tracking-widest text-primary text-xs font-medium title-font">
-              {unity}
+              {/* {unity} */}
+              {lesson?.attributes?.unity?.data?.attributes?.name}
             </h3>
             <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-              {title}
+              {/* {title} */}
+              {lesson?.attributes?.title}
             </h2>
             {/* <p className="leading-snug inline text-base">{desc}</p> */}
           </div>
@@ -41,18 +46,13 @@ const LessonCard = ({ title, desc, unity }) => {
           <ModalHeader>اختر المدرس (القناة)</ModalHeader>
           <ModalBody>
             <div className="grid grid-cols-2 gap-2.5">
-              <Button as={Link} to="eldar-1/video2" colorScheme="green">
-                محمد عادل
-              </Button>
-              <Button as={Link} to="eldar-1/video2" colorScheme="green">
-                محمد عادل
-              </Button>
-              <Button as={Link} to="eldar-1/video2" colorScheme="green">
-                محمد عادل
-              </Button>
-              <Button as={Link} to="eldar-1/video2" colorScheme="green">
-                محمد عادل
-              </Button>
+              {lesson?.attributes?.videos?.data?.map((video, key) => {
+                return (
+                  <Button key={key} as={Link} to={`${lesson?.attributes?.slug}/${video?.id}`} colorScheme="green">
+                  {video?.attributes?.teacherName}
+                </Button>
+                )
+              })}
             </div>
           </ModalBody>
 

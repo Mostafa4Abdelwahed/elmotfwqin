@@ -32,7 +32,7 @@ function App() {
           {/* <Route path=":lang/teachers" element={<Teachers />} /> */}
           <Route path=":lang/units" element={<Units />} />
           <Route path=":lang/units/:unity" element={<Lessons />} />
-          <Route path=":lang/units/:unity/:lessonId/:videoId" element={<Lesson />} />
+          <Route path=":lang/units/:unity/:lessonSlug/:video" element={<Lesson />} />
           <Route path=":lang/units/:unity/quiz/:id" element={<Quiz />} />
           <Route path="watch-later" element={<WatchLater />} />
           <Route path="history" element={<History />} />

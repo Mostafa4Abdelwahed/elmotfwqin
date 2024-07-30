@@ -1,23 +1,25 @@
 import { Link } from "react-router-dom";
 
-const UnityCard = ({ title, desc, saved }) => {
+const UnityCard = ({ unity }) => {
+  const saved = false;
   return (
     <div className="relative max-w-xs border border-solid border-gray-200 rounded-2xl transition-all duration-500 ">
       <div className="block overflow-hidden">
         <img
-          src="https://pagedone.io/asset/uploads/1695365240.png"
+          src={`${import.meta.env.VITE_SERVER_URL}${unity?.attributes?.image?.data?.attributes?.url}`}
           alt="Card image"
+          className="rounded-t-2xl mx-auto w-full"
         />
       </div>
       <div className="p-4">
         <h4 className="text-base font-semibold text-gray-900 mb-2 capitalize transition-all duration-500 ">
-          {title}
+          {unity?.attributes?.name}
         </h4>
         <p className="text-sm font-normal text-gray-500 transition-all duration-500 leading-5 mb-5">
-          {desc}
+          {unity?.attributes?.description}
         </p>
         <Link
-          to="/profile/arabic/units/elwehda-alolah"
+          to={unity?.attributes?.slug}
           className="bg-primary hover:bg-primary/70 shadow-sm rounded-full py-2 px-5 text-xs text-white font-semibold"
         >
           عرض المزيد

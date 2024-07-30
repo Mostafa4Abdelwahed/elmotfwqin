@@ -29,17 +29,6 @@
         "images"
       ]
     },
-    "teacher": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::teacher.teacher",
-      "inversedBy": "unities"
-    },
-    "level": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::level.level"
-    },
     "quiz": {
       "type": "relation",
       "relation": "oneToOne",
@@ -49,6 +38,36 @@
     "Term2": {
       "type": "boolean",
       "default": false,
+      "required": true
+    },
+    "language": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::language.language",
+      "inversedBy": "unities"
+    },
+    "secondary1": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "secondary2": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "secondary3": {
+      "type": "boolean"
+    },
+    "lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lesson.lesson",
+      "mappedBy": "unity"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
       "required": true
     }
   }

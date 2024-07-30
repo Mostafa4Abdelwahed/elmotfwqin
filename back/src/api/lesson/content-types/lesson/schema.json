@@ -18,18 +18,29 @@
       "unique": false
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "videos": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::video.video",
       "mappedBy": "lesson"
+    },
+    "unity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unity.unity",
+      "inversedBy": "lessons"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }
