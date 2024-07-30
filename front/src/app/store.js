@@ -10,9 +10,6 @@ export const store = configureStore({
     [languageSlice.reducerPath]: languageSlice.reducer,
     [unitySlice.reducerPath]: unitySlice.reducer,
     [lessonSlice.reducerPath]: lessonSlice.reducer,
-    // [categorySlice.reducerPath]: categorySlice.reducer,
-    // [pageSlice.reducerPath]: pageSlice.reducer,
-    // [contactSlice.reducerPath]: contactSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware()
   .concat(levelSlice.middleware)

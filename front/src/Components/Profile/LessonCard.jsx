@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 
 const LessonCard = ({ lesson }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log(lesson);
   return (
     <>
       <div onClick={onOpen} className="border-2 rounded-lg shadow-sm">

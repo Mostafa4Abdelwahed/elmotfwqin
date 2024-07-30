@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 const Lessons = () => {
   const params =  useParams();
   const { data: lessons, isLoading, isError } = useGetAllLessonsQuery(params.unity);
-
   if (isLoading) {
     return <h1 className="text-2xl text-center mt-5">جاري التحميل  ...</h1>
   }

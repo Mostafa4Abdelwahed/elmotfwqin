@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const login = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  })
   return (
     <div className="bg-gray-50">
       <div className="flex flex-col items-center justify-center py-24 px-4">
@@ -16,6 +21,8 @@ const login = () => {
                 </label>
                 <div className="relative flex items-center">
                   <input
+                    value={user.email}
+                    onChange={(e)=>{setUser({...user, email:e.target.value})}}
                     name="username"
                     type="text"
                     required
@@ -26,9 +33,13 @@ const login = () => {
               </div>
 
               <div>
-                <label className="text-gray-800 text-sm mb-2 block">الباسورد</label>
+                <label className="text-gray-800 text-sm mb-2 block">
+                  الباسورد
+                </label>
                 <div className="relative flex items-center">
                   <input
+                    value={user.password}
+                    onChange={(e)=>{setUser({...user, password:e.target.value})}}
                     name="password"
                     type="password"
                     required

@@ -11,7 +11,6 @@ const Subjects = () => {
   if (isError) {
     return <h1 className="text-5xl text-center mt-16">Error</h1>
   }
-  console.log(languages);
   return (
     <Container>
       <Header title="اللغات" desc="قم بإختيار اللغة لعرض التفاصيل" />

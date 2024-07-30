@@ -8,19 +8,19 @@ import { useGetSingleLessonQuery } from "../../../app/ApiCalls/lessonSlice";
 const Lesson = () => {
   const params = useParams();
   const { data: lesson, isLoading, isError } = useGetSingleLessonQuery(params.video);
+  const videoId = lesson?.data?.attributes?.VideoId;
   const videoSrc = {
     type: "video",
-    sources: [
+    sources: [ 
       {
-        src: lesson?.data?.attributes?.VideoId,
+        src: videoId || "",
         provider: "youtube",
       },
     ],
-  };
+  }; 
   if (isLoading) {
     return <h1 className="text-2xl text-center mt-5">جاري التحميل...</h1>
   }
-  console.log(lesson?.data?.attributes?.VideoId);
   return (
     <div className="pt-7 relative mx-auto">
       <Container>
