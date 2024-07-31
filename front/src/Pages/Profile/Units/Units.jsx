@@ -3,12 +3,13 @@ import { useGetAllUnitisQuery } from "../../../app/ApiCalls/unitySlice";
 import UnityCard from "../../../Components/Profile/UnityCard";
 import Container from "../../../Components/ui/container";
 import Header from "../../../Components/ui/Header";
+import UnitsSkeleton from "../../../Components/Skeletons/UnitsSkeleton";
 
 const Units = () => {
   const params = useParams();
-  const { data: unities, isLoading, isError } = useGetAllUnitisQuery({year:"secondary1", lang:params.lang});
+  const { data: unities, isLoading } = useGetAllUnitisQuery({year:"secondary1", lang:params.lang});
   if(isLoading){
-    return <h1 className="text-2xl text-center mt-5">Loading...</h1>
+    return <UnitsSkeleton />;
   }
   return (
     <Container>

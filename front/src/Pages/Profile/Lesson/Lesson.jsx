@@ -4,6 +4,7 @@ import Plyr from "plyr-react";
 import "plyr-react/plyr.css";
 import { useParams } from "react-router-dom";
 import { useGetSingleLessonQuery } from "../../../app/ApiCalls/lessonSlice";
+import LessonSkeleton from "../../../Components/Skeletons/LessonSkeleton";
 
 const Lesson = () => {
   const params = useParams();
@@ -19,7 +20,7 @@ const Lesson = () => {
     ],
   }; 
   if (isLoading) {
-    return <h1 className="text-2xl text-center mt-5">جاري التحميل...</h1>
+    return <LessonSkeleton />;
   }
   return (
     <div className="pt-7 relative mx-auto">

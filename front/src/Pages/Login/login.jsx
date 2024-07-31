@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
+import { Button } from "@chakra-ui/react"
+import { selectLogin, userLogin } from "../../app/Features/loginSlice";
 
 const login = () => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector(selectLogin)
   const [user, setUser] = useState({
-    email: "",
+    identifier: "",
     password: ""
   })
+  const handleSubmit = ()=>{
+    dispatch(userLogin(user))
+  }
   return (
     <div className="bg-gray-50">
       <div className="flex flex-col items-center justify-center py-24 px-4">
@@ -22,7 +30,7 @@ const login = () => {
                 <div className="relative flex items-center">
                   <input
                     value={user.email}
-                    onChange={(e)=>{setUser({...user, email:e.target.value})}}
+                    onChange={(e)=>{setUser({...user, identifier:e.target.value})}}
                     name="username"
                     type="text"
                     required
@@ -61,12 +69,14 @@ const login = () => {
               </div>
 
               <div>
-                <button
+                {/* <button
+                onClick={handleSubmit}
                   type="button"
                   className="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-primary hover:bg-primary/75 focus:outline-none"
                 >
                   تسجيل الدخول
-                </button>
+                </button> */}
+                <Button onClick={handleSubmit} isLoading={loading} colorScheme="green" className="w-full py-6">تسجيل الدخول</Button>
               </div>
               <p className="text-gray-800 text-sm !mt-8 text-center">
                 معندكش حساب ؟

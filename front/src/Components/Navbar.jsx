@@ -6,7 +6,6 @@ import Container from "../Components/ui/container";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const location = useLocation();
-  console.log(location);
   return (
     <header className="bg-white border-b-2 border-gray-200 fixed z-50 left-0 right-0 top-0">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">

@@ -730,7 +730,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     firstName: Attribute.String & Attribute.Required;
     lastName: Attribute.String & Attribute.Required;
-    phoneNumber: Attribute.Integer & Attribute.Required & Attribute.Unique;
     quizzes: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToMany',
@@ -741,6 +740,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::lesson.lesson'
     >;
+    Term2: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    phoneNumber: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -798,6 +799,39 @@ export interface PluginI18NLocale extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.String & Attribute.Required & Attribute.Unique;
+    content: Attribute.Text & Attribute.Required & Attribute.Unique;
+    thumbnail: Attribute.Media<'images', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
       'oneToOne',
       'admin::user'
     > &
@@ -1036,6 +1070,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::article.article': ApiArticleArticle;
       'api::language.language': ApiLanguageLanguage;
       'api::lesson.lesson': ApiLessonLesson;
       'api::quiz.quiz': ApiQuizQuiz;

@@ -78,11 +78,6 @@
       "type": "string",
       "required": true
     },
-    "phoneNumber": {
-      "type": "integer",
-      "required": true,
-      "unique": true
-    },
     "quizzes": {
       "type": "relation",
       "relation": "oneToMany",
@@ -93,6 +88,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::lesson.lesson"
+    },
+    "Term2": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

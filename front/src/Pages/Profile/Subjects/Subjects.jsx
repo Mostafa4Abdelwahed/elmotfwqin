@@ -1,4 +1,5 @@
 import { useGetAllLanguagesQuery } from "../../../app/ApiCalls/languageSlice";
+import LanguagesSkeleton from "../../../Components/Skeletons/LanguagesSkeleton";
 import Container from "../../../Components/ui/container";
 import Header from "../../../Components/ui/Header";
 import Card from "../../../Components/ui/SmallCard";
@@ -6,7 +7,7 @@ import Card from "../../../Components/ui/SmallCard";
 const Subjects = () => {
   const { data: languages, isLoading, isError } = useGetAllLanguagesQuery("secondary1");
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <LanguagesSkeleton />;
   }
   if (isError) {
     return <h1 className="text-5xl text-center mt-16">Error</h1>
