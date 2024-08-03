@@ -27,10 +27,10 @@
       "required": true,
       "unique": true
     },
-    "users": {
+    "histories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::users-permissions.user",
+      "target": "api::history.history",
       "mappedBy": "video"
     }
   }

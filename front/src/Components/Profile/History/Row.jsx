@@ -1,17 +1,17 @@
-const Row = ({title, subject, unity, mr}) => {
+const Row = ({lesson}) => {
   return (
     <tr>
       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900 ">
-        {title}
+        {lesson?.attributes?.video?.data?.attributes?.lesson?.data?.attributes?.title}
       </td>
       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-        {subject}
+        {lesson?.attributes?.video?.data?.attributes?.lesson?.data?.attributes?.unity?.data?.attributes?.language?.data?.attributes?.name}
       </td>
       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-        {unity}
+        {lesson?.attributes?.video?.data?.attributes?.lesson?.data?.attributes?.unity?.data?.attributes?.name}
       </td>
       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
-        {mr}
+        {lesson?.attributes?.video?.data?.attributes?.teacherName}
       </td>
     </tr>
   );

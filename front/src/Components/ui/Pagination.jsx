@@ -9,12 +9,12 @@ const Pagination = ({page, totalPages}) => {
     <>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="Next"
+        nextLabel="التالي"
         onPageChange={handleClick}
-        marginPagesDisplayed={3}
-        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={1}
         pageCount={totalPages}
-        previousLabel="Back"
+        previousLabel="السابق"
         renderOnZeroPageCount={null}
         containerClassName="flex items-center justify-center flex-wrap gap-x-4 my-10"
         pageLinkClassName="w-10 h-10 text-gray-500 bg-white p-2 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"

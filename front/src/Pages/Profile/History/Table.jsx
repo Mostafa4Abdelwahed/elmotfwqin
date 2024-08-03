@@ -1,6 +1,6 @@
 import Row from "../../../Components/Profile/History/Row"
 
-const Table = () => {
+const Table = ({histories}) => {
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto">
@@ -16,14 +16,11 @@ const Table = () => {
                           </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-300 ">
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
-                          <Row title="درس التفاعل الكيميائي الجزء الاول" subject="كيمياء" unity="الباب الاول" mr="محمد القاضي" />
+                        {
+                            histories?.map((lesson, key)=>{
+                                return <Row key={key} lesson={lesson} />
+                            })
+                        }
                       </tbody>
                   </table>
               </div>

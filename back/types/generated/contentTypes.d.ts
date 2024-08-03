@@ -740,10 +740,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     term: Attribute.Enumeration<['term1', 'term2']> &
       Attribute.Required &
       Attribute.DefaultTo<'term1'>;
-    video: Attribute.Relation<
+    histories: Attribute.Relation<
       'plugin::users-permissions.user',
-      'manyToOne',
-      'api::video.video'
+      'oneToMany',
+      'api::history.history'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -836,6 +836,45 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHistoryHistory extends Schema.CollectionType {
+  collectionName: 'histories';
+  info: {
+    singularName: 'history';
+    pluralName: 'histories';
+    displayName: 'history';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    video: Attribute.Relation<
+      'api::history.history',
+      'manyToOne',
+      'api::video.video'
+    >;
+    user: Attribute.Relation<
+      'api::history.history',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::history.history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::history.history',
       'oneToOne',
       'admin::user'
     > &
@@ -1040,10 +1079,10 @@ export interface ApiVideoVideo extends Schema.CollectionType {
       'api::lesson.lesson'
     >;
     teacherName: Attribute.String & Attribute.Required & Attribute.Unique;
-    users: Attribute.Relation<
+    histories: Attribute.Relation<
       'api::video.video',
       'oneToMany',
-      'plugin::users-permissions.user'
+      'api::history.history'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1082,6 +1121,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::article.article': ApiArticleArticle;
+      'api::history.history': ApiHistoryHistory;
       'api::language.language': ApiLanguageLanguage;
       'api::lesson.lesson': ApiLessonLesson;
       'api::quiz.quiz': ApiQuizQuiz;

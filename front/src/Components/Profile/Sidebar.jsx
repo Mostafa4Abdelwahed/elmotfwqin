@@ -100,7 +100,7 @@ const Sidebar = ({ show, setShow }) => {
                 </div>
               </NavLink>
             </li>
-            {/* <li>
+            <li>
               <NavLink className="side-link" to="history">
                 <div className="flex-col text-gray-500 hover:bg-primary hover:text-white transition-all flex p-3 bg-white rounded-lg">
                   <div className="h-5 gap-3 flex">
@@ -125,7 +125,7 @@ const Sidebar = ({ show, setShow }) => {
                 </div>
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink className="side-link" to="certificates">
                 <div className="flex-col text-gray-500 hover:bg-primary hover:text-white transition-all flex p-3 bg-white rounded-lg">
                   <div className="h-5 gap-3 flex">

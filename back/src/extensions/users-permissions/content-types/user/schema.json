@@ -104,11 +104,11 @@
       "required": true,
       "default": "term1"
     },
-    "video": {
+    "histories": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::video.video",
-      "inversedBy": "users"
+      "relation": "oneToMany",
+      "target": "api::history.history",
+      "mappedBy": "user"
     }
   }
 }

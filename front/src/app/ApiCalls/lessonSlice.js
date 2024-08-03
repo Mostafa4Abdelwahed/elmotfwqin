@@ -24,8 +24,18 @@ export const lessonSlice = createApi({
                     }
                 }
             }
+        }),
+        getLessonsViews: builder.query({
+            query({userId, page}) {
+                return {
+                    url: `histories?populate=user,video.lesson.unity.language&filters[user][id][$eq]=${userId}&sort=createdAt:DESC&pagination[pageSize]=10&pagination[page]=${page}`,
+                    headers:{
+                        Authorization: `Bearer ${CookieService.get("jwt")}`
+                    }
+                }
+            }
         })
     })
 })
 
-export const { useGetAllLessonsQuery, useGetSingleLessonQuery } = lessonSlice
+export const { useGetAllLessonsQuery, useGetSingleLessonQuery, useGetLessonsViewsQuery } = lessonSlice
