@@ -725,23 +725,26 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     favourites: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToMany',
+      'manyToMany',
       'api::unity.unity'
     >;
-    firstName: Attribute.String & Attribute.Required;
-    lastName: Attribute.String & Attribute.Required;
+    fullName: Attribute.String & Attribute.Required;
     quizzes: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToMany',
       'api::quiz.quiz'
     >;
-    views: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::lesson.lesson'
-    >;
-    Term2: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     phoneNumber: Attribute.String & Attribute.Required & Attribute.Unique;
+    level: Attribute.Enumeration<['secondary1', 'secondary2', 'secondary3']> &
+      Attribute.Required;
+    term: Attribute.Enumeration<['term1', 'term2']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'term1'>;
+    video: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToOne',
+      'api::video.video'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -812,6 +815,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     singularName: 'article';
     pluralName: 'articles';
     displayName: 'article';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -819,8 +823,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     description: Attribute.String & Attribute.Required & Attribute.Unique;
-    content: Attribute.Text & Attribute.Required & Attribute.Unique;
-    thumbnail: Attribute.Media<'images', true> & Attribute.Required;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -853,21 +857,15 @@ export interface ApiLanguageLanguage extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     image: Attribute.Media<'images'> & Attribute.Required;
-    secondary1: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    secondary2: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    secondary3: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
     slug: Attribute.UID<'api::language.language', 'name'> & Attribute.Required;
     unities: Attribute.Relation<
       'api::language.language',
       'oneToMany',
       'api::unity.unity'
     >;
+    secondary1: Attribute.Boolean & Attribute.Required;
+    secondary2: Attribute.Boolean & Attribute.Required;
+    secondary3: Attribute.Boolean & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -952,6 +950,7 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    image: Attribute.Media<'images'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -978,7 +977,6 @@ export interface ApiUnityUnity extends Schema.CollectionType {
     description: Attribute.String & Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
     quiz: Attribute.Relation<'api::unity.unity', 'oneToOne', 'api::quiz.quiz'>;
-    Term2: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     language: Attribute.Relation<
       'api::unity.unity',
       'manyToOne',
@@ -997,6 +995,14 @@ export interface ApiUnityUnity extends Schema.CollectionType {
       'api::lesson.lesson'
     >;
     slug: Attribute.UID<'api::unity.unity', 'name'> & Attribute.Required;
+    term: Attribute.Enumeration<['term1', 'term2']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'term1'>;
+    users: Attribute.Relation<
+      'api::unity.unity',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1034,6 +1040,11 @@ export interface ApiVideoVideo extends Schema.CollectionType {
       'api::lesson.lesson'
     >;
     teacherName: Attribute.String & Attribute.Required & Attribute.Unique;
+    users: Attribute.Relation<
+      'api::video.video',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,11 +1,13 @@
 import { useGetAllLanguagesQuery } from "../../../app/ApiCalls/languageSlice";
+import { useGetUserQuery } from "../../../app/ApiCalls/userSlice";
 import LanguagesSkeleton from "../../../Components/Skeletons/LanguagesSkeleton";
 import Container from "../../../Components/ui/container";
 import Header from "../../../Components/ui/Header";
 import Card from "../../../Components/ui/SmallCard";
 
 const Subjects = () => {
-  const { data: languages, isLoading, isError } = useGetAllLanguagesQuery("secondary1");
+  const {data:user} = useGetUserQuery()
+  const { data: languages, isLoading, isError } = useGetAllLanguagesQuery(user?.level);
   if (isLoading) {
     return <LanguagesSkeleton />;
   }

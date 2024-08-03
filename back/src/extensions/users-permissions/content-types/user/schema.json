@@ -67,14 +67,11 @@
     },
     "favourites": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::unity.unity"
+      "relation": "manyToMany",
+      "target": "api::unity.unity",
+      "mappedBy": "users"
     },
-    "firstName": {
-      "type": "string",
-      "required": true
-    },
-    "lastName": {
+    "fullName": {
       "type": "string",
       "required": true
     },
@@ -84,20 +81,34 @@
       "target": "api::quiz.quiz",
       "mappedBy": "user"
     },
-    "views": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::lesson.lesson"
-    },
-    "Term2": {
-      "type": "boolean",
-      "required": true,
-      "default": false
-    },
     "phoneNumber": {
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "secondary1",
+        "secondary2",
+        "secondary3"
+      ],
+      "required": true
+    },
+    "term": {
+      "type": "enumeration",
+      "enum": [
+        "term1",
+        "term2"
+      ],
+      "required": true,
+      "default": "term1"
+    },
+    "video": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video.video",
+      "inversedBy": "users"
     }
   }
 }

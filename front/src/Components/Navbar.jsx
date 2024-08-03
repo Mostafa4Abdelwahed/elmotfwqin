@@ -2,10 +2,28 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "./../../public/logo.png";
 import Container from "../Components/ui/container";
+import avatar from "../assets/avatar.png";
+import {
+  Avatar,
+  Button,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
+import CookieService from "../Services/CookieService";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const location = useLocation();
+  const token = CookieService.get("jwt");
+  const logoutHandler = () => {
+    CookieService.remove("jwt")
+    window.location.reload()
+  };
+
   return (
     <header className="bg-white border-b-2 border-gray-200 fixed z-50 left-0 right-0 top-0">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -20,11 +38,11 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {
-            location.pathname === "/" && <div className="hidden md:block">
-            <nav>
-              <ul className="flex items-center gap-6 text-sm">
-              <li>
+          {location.pathname === "/" && (
+            <div className="hidden md:block">
+              <nav>
+                <ul className="flex items-center gap-6 text-sm">
+                  <li>
                     <a
                       className="text-gray-500 transition hover:text-primary"
                       href="#home"
@@ -59,10 +77,10 @@ const Navbar = () => {
                       المدرسين
                     </a>
                   </li>
-              </ul>
-            </nav>
-          </div>
-          }
+                </ul>
+              </nav>
+            </div>
+          )}
 
           {show && (
             <nav className="bg-white shadow-md border-t-2 absolute top-full left-0 right-0">
@@ -103,12 +121,41 @@ const Navbar = () => {
                       المدرسين
                     </a>
                   </li>
-
                 </ul>
               </Container>
             </nav>
           )}
 
+          {
+            token ? 
+            <Flex alignItems={"center"}>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}
+                >
+                  <Avatar
+                    size={"md"}
+                    src={avatar}
+                    className="shadow-md border-2"
+                  />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem as={Link} to="profile">
+                    الملف الشخصي
+                  </MenuItem>
+                  <MenuItem as={Link} to="profile/settings">
+                    الإعدادات
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem onClick={logoutHandler}>تسجيل الخروج</MenuItem>
+                </MenuList>
+              </Menu>
+            </Flex>
+              :
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
               <Link
@@ -152,6 +199,8 @@ const Navbar = () => {
 
             
           </div>
+          }
+
         </div>
       </div>
     </header>

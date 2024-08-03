@@ -1,8 +1,15 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
+import CookieService from "../../Services/CookieService";
 
 const Sidebar = ({ show, setShow }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const logoutHandler = ()=>{
+    CookieService.remove("jwt")
+    window.location.reload()
+    navigate("/")
+  }
   return (
     <>
       <div
@@ -35,7 +42,7 @@ const Sidebar = ({ show, setShow }) => {
           </a>
         </div>
         <div className="w-full border-t-2 pt-3 mt-3">
-          <ul className="flex-col gap-1 flex">
+          <ul className="flex-col gap-2 flex">
             <li>
               <Link
                 className={`side-link ${
@@ -93,7 +100,7 @@ const Sidebar = ({ show, setShow }) => {
                 </div>
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink className="side-link" to="history">
                 <div className="flex-col text-gray-500 hover:bg-primary hover:text-white transition-all flex p-3 bg-white rounded-lg">
                   <div className="h-5 gap-3 flex">
@@ -144,7 +151,7 @@ const Sidebar = ({ show, setShow }) => {
                   </div>
                 </div>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink className="side-link" to="settings">
                 <div className="flex-col text-gray-500 hover:bg-primary hover:text-white transition-all flex p-3 bg-white rounded-lg">
@@ -178,7 +185,7 @@ const Sidebar = ({ show, setShow }) => {
               </NavLink>
             </li>
             <li>
-              <button className="w-full">
+              <button onClick={logoutHandler} className="w-full">
                 <div className="flex-col text-gray-500 hover:bg-primary hover:text-white transition-all flex p-3 bg-white rounded-lg">
                   <div className="h-5 gap-3 flex">
                     <div className="relative">
@@ -206,42 +213,6 @@ const Sidebar = ({ show, setShow }) => {
             </li>
           </ul>
         </div>
-        {/* <div
-        onClick={() => setShow(!show)}
-        className="bg-gray-200 block md:hidden border-2 p-2 fixed left-5 top-5 rounded-md cursor-pointer"
-      >
-        {!show ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
-        )}
-      </div> */}
       </div>
       <div className="nav z-40 flex justify-between items-center md:hidden bg-primary py-3 px-4 fixed top-0 left-0 right-0">
         <Link to="/profile" className="font-bold text-white">المتفوقين</Link>

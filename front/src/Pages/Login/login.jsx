@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "@chakra-ui/react"
-import { selectLogin, userLogin } from "../../app/Features/loginSlice";
+import { selectAuth, userLogin } from "../../app/Features/authSlice";
 
 const login = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector(selectLogin)
+  const { loading } = useSelector(selectAuth)
   const [user, setUser] = useState({
     identifier: "",
     password: ""
@@ -69,13 +69,6 @@ const login = () => {
               </div>
 
               <div>
-                {/* <button
-                onClick={handleSubmit}
-                  type="button"
-                  className="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-primary hover:bg-primary/75 focus:outline-none"
-                >
-                  تسجيل الدخول
-                </button> */}
                 <Button onClick={handleSubmit} isLoading={loading} colorScheme="green" className="w-full py-6">تسجيل الدخول</Button>
               </div>
               <p className="text-gray-800 text-sm !mt-8 text-center">

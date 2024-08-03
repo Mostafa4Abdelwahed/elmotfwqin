@@ -13,7 +13,19 @@ export interface QQuestion extends Schema.Component {
     option3: Attribute.String & Attribute.Required;
     option4: Attribute.String & Attribute.Required;
     correctAnswer: Attribute.Integer & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
+    image: Attribute.Media<'images'>;
+  };
+}
+
+export interface LevelLevel extends Schema.Component {
+  collectionName: 'components_level_levels';
+  info: {
+    displayName: 'level';
+    icon: 'filter';
+    description: '';
+  };
+  attributes: {
+    secondary: Attribute.String;
   };
 }
 
@@ -31,6 +43,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'q.question': QQuestion;
+      'level.level': LevelLevel;
       'anwer.answer': AnwerAnswer;
     }
   }

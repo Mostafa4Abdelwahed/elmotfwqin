@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_level_levels",
+  "info": {
+    "displayName": "level",
+    "icon": "filter",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "secondary": {
+      "type": "string"
+    }
+  }
+}
