@@ -14,6 +14,8 @@ export interface QQuestion extends Schema.Component {
     option4: Attribute.String & Attribute.Required;
     correctAnswer: Attribute.Integer & Attribute.Required;
     image: Attribute.Media<'images'>;
+    point: Attribute.Integer & Attribute.Required;
+    explain: Attribute.Text & Attribute.Required;
   };
 }
 

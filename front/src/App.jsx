@@ -9,13 +9,10 @@ import LayoutProfile from "./Components/Profile/Layout";
 import Units from "./Pages/Profile/Units/Units";
 import WatchLater from "./Pages/Profile/WatchLater/WatchLater";
 import History from "./Pages/Profile/History/History";
-import Certificates from "./Pages/Profile/Certificates/Certificates";
 import Settings from "./Pages/Profile/Settings/Settings";
-// import Teachers from "./Pages/Profile/Teachers/Teachers";
 import Lessons from "./Pages/Profile/Lessons/Lessons";
 import Subjects from "./Pages/Profile/Subjects/Subjects";
 import Lesson from "./Pages/Profile/Lesson/Lesson";
-import Quiz from "./Pages/Profile/Quiz/Quiz";
 import Blog from "./Pages/Blog/BlogPage/Blog";
 import CookieService from "./Services/CookieService";
 import Article from "./Pages/Blog/Article/Article";
@@ -56,20 +53,12 @@ function App() {
             element={token ? <Lesson /> : <Navigate to="/" />}
           />
           <Route
-            path=":lang/units/:unity/quiz/:id"
-            element={token ? <Quiz /> : <Navigate to="/" />}
-          />
-          <Route
             path="watch-later"
             element={token ? <WatchLater /> : <Navigate to="/" />}
           />
           <Route
             path="history"
             element={token ? <History /> : <Navigate to="/" />}
-          />
-          <Route
-            path="certificates"
-            element={token ? <Certificates /> : <Navigate to="/" />}
           />
           <Route
             path="settings"

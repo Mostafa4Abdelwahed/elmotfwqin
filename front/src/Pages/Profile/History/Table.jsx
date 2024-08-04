@@ -13,6 +13,7 @@ const Table = ({histories}) => {
                               <th scope="col" className="p-5 text-right text-sm leading-6 font-semibold text-gray-900 capitalize"> المادة </th>
                               <th scope="col" className="p-5 text-right text-sm leading-6 font-semibold text-gray-900 capitalize"> الوحدة </th>
                               <th scope="col" className="p-5 text-right text-sm leading-6 font-semibold text-gray-900 capitalize"> المستر </th>
+                              <th scope="col" className="p-5 text-right text-sm leading-6 font-semibold text-gray-900 capitalize"> التاريخ </th>
                           </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-300 ">

@@ -1,4 +1,6 @@
 const Row = ({lesson}) => {
+  const date = new Date(lesson?.attributes?.createdAt);
+  let  dateHandle = date.toLocaleDateString();
   return (
     <tr>
       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900 ">
@@ -12,6 +14,9 @@ const Row = ({lesson}) => {
       </td>
       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
         {lesson?.attributes?.video?.data?.attributes?.teacherName}
+      </td>
+      <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+        {dateHandle}
       </td>
     </tr>
   );

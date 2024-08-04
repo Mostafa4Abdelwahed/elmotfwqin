@@ -10,9 +10,8 @@ import { useGetUserQuery } from "../../../app/ApiCalls/userSlice.js"
 const History = () => {
   const { data:user } = useGetUserQuery();
   const [page, setPage] = useState(1);
-  const { data } = useGetLessonsViewsQuery({userId: user?.id, page});
+  const { data, isLoading } = useGetLessonsViewsQuery({userId: user?.id, page});
   const totalPage = data?.meta?.pagination?.pageCount;
-  const isLoading = false;
   if (isLoading) {
     return <HistorySkeleton />;
   }

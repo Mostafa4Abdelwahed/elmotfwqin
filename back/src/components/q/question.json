@@ -37,6 +37,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "point": {
+      "type": "integer",
+      "required": true
+    },
+    "explain": {
+      "type": "text",
+      "required": true
     }
   }
 }

@@ -14,8 +14,8 @@ const LessonCard = ({ lesson }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <div onClick={onOpen} className="border-2 rounded-lg shadow-sm">
-        <div className="bg-gray-100 rounded-lg">
+      <div onClick={onOpen} className="border-2 cursor-pointer rounded-lg shadow-sm">
+        <div className="bg-gray-100 rounded-lg h-full">
           <div>
             <img
               className="h-40 rounded w-full object-cover object-center"
@@ -27,14 +27,11 @@ const LessonCard = ({ lesson }) => {
           </div>
           <div className="p-4">
             <h3 className="tracking-widest text-primary text-xs font-medium title-font">
-              {/* {unity} */}
               {lesson?.attributes?.unity?.data?.attributes?.name}
             </h3>
             <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-              {/* {title} */}
               {lesson?.attributes?.title}
             </h2>
-            {/* <p className="leading-snug inline text-base">{desc}</p> */}
           </div>
         </div>
       </div>

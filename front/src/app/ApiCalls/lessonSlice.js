@@ -3,6 +3,7 @@ import CookieService from "../../Services/CookieService";
 
 export const lessonSlice = createApi({
     reducerPath: "lessons",
+    tagTypes: ["lesson"],
     baseQuery: fetchBaseQuery({baseUrl: `${import.meta.env.VITE_SERVER_URL}/api`}),
     endpoints: (builder) => ({
         getAllLessons: builder.query({
@@ -16,14 +17,12 @@ export const lessonSlice = createApi({
             }
         }),
         getSingleLesson: builder.query({
-            query(id) {
-                return {
+            query: (id)=> ({
                     url: `videos/${id}`,
                     headers:{
                         Authorization: `Bearer ${CookieService.get("jwt")}`
                     }
-                }
-            }
+            }),
         }),
         getLessonsViews: builder.query({
             query({userId, page}) {
@@ -34,8 +33,35 @@ export const lessonSlice = createApi({
                     }
                 }
             }
+        }),
+        addLessonToViews: builder.mutation({
+            query: (args)=> ({
+                    url: `histories`,
+                    method: "POST",
+                    headers:{
+                        Authorization: `Bearer ${CookieService.get("jwt")}`
+                    },
+                    body:{
+                        data:{
+                            video: args.videoId,
+                            user: args.userId
+                        }
+                    }
+            }),
+            invalidatesTags: ["lesson"],
+        }),
+        checkLessonIsViewed: builder.query({
+            query({userId, videoId}) {
+                return {
+                    url: `histories?populate=user,video.lesson.unity.language&filters[user][id][$eq]=${userId}&filters[video][id][$eq]=${videoId}&sort=createdAt:DESC`,
+                    headers:{
+                        Authorization: `Bearer ${CookieService.get("jwt")}`
+                    }
+                }
+            },
+            providesTags: ["lesson"]
         })
     })
 })
 
-export const { useGetAllLessonsQuery, useGetSingleLessonQuery, useGetLessonsViewsQuery } = lessonSlice
+export const { useGetAllLessonsQuery, useGetSingleLessonQuery, useGetLessonsViewsQuery, useAddLessonToViewsMutation, useCheckLessonIsViewedQuery } = lessonSlice
