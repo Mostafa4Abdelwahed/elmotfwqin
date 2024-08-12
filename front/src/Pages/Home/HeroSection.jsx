@@ -31,7 +31,7 @@ const HeroSection = () => {
             </div>)
             :
             <Button type="outline" to="profile">
-            تصفح الكورسات
+            ابدء الاستكشاف
           </Button>
           }
         </div>

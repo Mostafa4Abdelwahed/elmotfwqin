@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import TestimonialCard from "../../Components/Home/TestimonialCard";
 import Container from "../../Components/ui/container";
 import { useGetAllTestimonailsQuery } from "../../app/ApiCalls/testimonialSlice";
+import TestimonialsSkeleton from "../../Components/Skeletons/TestimonialsSkeleton";
 
 const TestimonialsSection = () => {
   const {
@@ -36,6 +37,9 @@ const TestimonialsSection = () => {
       },
     ],
   };
+  if (isLoading) {
+    return <TestimonialsSkeleton />
+  }
   if (isError) {
     return (
       <h1 className="text-4xl text-center font-bold">
