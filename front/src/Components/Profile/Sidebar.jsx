@@ -1,14 +1,12 @@
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "/logo.png";
 import CookieService from "../../Services/CookieService";
 
 const Sidebar = ({ show, setShow }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const logoutHandler = ()=>{
     CookieService.remove("jwt")
     window.location.reload()
-    navigate("/")
   }
   return (
     <>

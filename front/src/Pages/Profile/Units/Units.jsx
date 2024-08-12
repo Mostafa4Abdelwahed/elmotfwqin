@@ -30,11 +30,17 @@ const Units = () => {
         <AlertIcon />
         تم إضافة الوحدة الي القائمة بنجاح
       </Alert>}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-10">
-        {unities?.data?.map((unity, key) => {
-          return <UnityCard key={key} setSuccess={setIsSuccess} unity={unity} />;
-        })}
-      </div>
+        {unities?.data?.length >= 1 ? 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-10">
+          {
+            unities?.data?.map((unity, key) => {
+              return <UnityCard key={key} setSuccess={setIsSuccess} unity={unity} />;
+            })
+          }
+        </div>
+        :
+        <h1 className="text-4xl text-center font-semibold mb-10">لايوجد وحدات</h1>
+      }
     </Container>
   );
 };

@@ -17,20 +17,28 @@ const Lessons = () => {
   if (isLoading) {
     return <LessonsSkeleton />;
   }
-  if (isError){
-    return <h1 className="text-4xl text-center font-bold">خطاء في تحميل الفيديوهات</h1>
+  if (isError) {
+    return (
+      <h1 className="text-4xl text-center font-bold">
+        خطاء في تحميل الفيديوهات
+      </h1>
+    );
   }
   return (
     <Container>
       <Header title="الدروس" desc="قم بإختيار الدرس لعرض تفاصيلة" />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 pb-10">
-        {lessons?.data?.map((lesson, key) => {
-          return <LessonCard key={key} lesson={lesson} />;
-        })}
-        {/* {quizes?.data?.map((quiz, key) => {
+      {lessons?.data?.length >= 1 ? (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 pb-10">
+          {lessons?.data?.map((lesson, key) => {
+            return <LessonCard key={key} lesson={lesson} />;
+          })}
+        </div>
+      ) : (
+        <h1 className="text-4xl text-center font-semibold mb-10">لايوجد دروس</h1>
+      )}
+      {/* {quizes?.data?.map((quiz, key) => {
           return <QuizCard key={key} quiz={quiz} /> ;
         })} */}
-      </div>
     </Container>
   );
 };

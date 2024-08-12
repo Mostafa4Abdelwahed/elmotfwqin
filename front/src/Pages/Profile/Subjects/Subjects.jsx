@@ -17,18 +17,23 @@ const Subjects = () => {
   return (
     <Container>
       <Header title="اللغات" desc="قم بإختيار اللغة لعرض التفاصيل" />
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 pb-10">
         {
-        languages?.data?.map((language, key) => {
-          return <Card
-              key={key}
-              title={language?.attributes?.name}
-              thumbnail={`${import.meta.env.VITE_SERVER_URL}${language?.attributes?.image?.data?.attributes?.url}`}
-              link={`${language?.attributes?.slug}/units`}
-            />
-        })
+        languages?.data?.length >= 1 ?
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 pb-10">
+          {
+            languages?.data?.map((language, key) => {
+              return <Card
+                  key={key}
+                  title={language?.attributes?.name}
+                  thumbnail={`${import.meta.env.VITE_SERVER_URL}${language?.attributes?.image?.data?.attributes?.url}`}
+                  link={`${language?.attributes?.slug}/units`}
+                />
+            })
+          }
+        </div>
+        :
+        <h1 className="text-4xl text-center font-semibold mb-10">لايوجد لغات</h1>
         }
-      </div>
     </Container>
   );
 };

@@ -4,7 +4,11 @@ import Container from "../../Components/ui/container";
 import { useGetAllTestimonailsQuery } from "../../app/ApiCalls/testimonialSlice";
 
 const TestimonialsSection = () => {
-  const { data: testimonials, isLoading, isError } = useGetAllTestimonailsQuery();
+  const {
+    data: testimonials,
+    isLoading,
+    isError,
+  } = useGetAllTestimonailsQuery();
   const settings = {
     dots: true,
     infinite: true,
@@ -32,8 +36,12 @@ const TestimonialsSection = () => {
       },
     ],
   };
-  if (isError){
-    return <h1 className="text-4xl text-center font-bold">خطاء في تحميل التقييمات</h1>
+  if (isError) {
+    return (
+      <h1 className="text-4xl text-center font-bold">
+        خطاء في تحميل التقييمات
+      </h1>
+    );
   }
   return (
     <div id="teachers" className="bg-gray-100 pt-10 pb-20">
@@ -46,19 +54,25 @@ const TestimonialsSection = () => {
             تقييمات الطلاب علي المنصة
           </p>
         </div>
-        <Slider dir="rtl" {...settings}>
-          {testimonials?.data?.map((testimonial, key) => {
-            return (
-              <TestimonialCard
-                key={key}
-                stars={testimonial?.attributes?.star}
-                name={testimonial?.attributes?.name}
-                level={testimonial?.attributes?.level}
-                comment={testimonial?.attributes?.comment}
-              />
-            );
-          })}
-        </Slider>
+        {testimonials?.data?.length >= 1 ? (
+          <Slider dir="rtl" {...settings}>
+            {testimonials?.data?.map((testimonial, key) => {
+              return (
+                <TestimonialCard
+                  key={key}
+                  stars={testimonial?.attributes?.star}
+                  name={testimonial?.attributes?.name}
+                  level={testimonial?.attributes?.level}
+                  comment={testimonial?.attributes?.comment}
+                />
+              );
+            })}
+          </Slider>
+        ) : (
+          <h1 className="text-5xl text-center font-semibold mb-3">
+            لاوجد تقييمات
+          </h1>
+        )}
       </Container>
     </div>
   );
