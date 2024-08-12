@@ -1,10 +1,8 @@
-1.Handle Pagination Responsive ===========================>(Right)
-2.Handle Quiz (انت جبت 20 من 20) To Bold
-3.Handle On Open Any Page window.scrollY(0)
+1.Handle Pagination Responsive ================================>(Right)
+2.Handle Quiz (انت جبت 20 من 20) To Bold ===========================>(Right)
+3.Handle On Open Any Page window.scroll(0,0) ===================>(Right)
 4.Progressive Web Application
 5.Add Validation On All Website
-6.Add Loading Skeleton & Error Handler
+6.Add Loading Skeleton & Error Handler ========================>(Right)
 7.Add (لايوجد اي وحدات) To All Pages
-8.Add Login With Google (Optional)
-9.Handle NotFound Page
-10.Add Page Forgot&Reset Password
+8.Handle NotFound Page ========================================>(Right)

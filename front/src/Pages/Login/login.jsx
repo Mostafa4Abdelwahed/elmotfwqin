@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "@chakra-ui/react"
@@ -14,6 +14,9 @@ const login = () => {
   const handleSubmit = ()=>{
     dispatch(userLogin(user))
   }
+  useEffect(()=>{
+    window.scroll(0,0);
+  },[])
   return (
     <div className="bg-gray-50">
       <div className="flex flex-col items-center justify-center py-24 px-4">

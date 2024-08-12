@@ -14,16 +14,11 @@ const Lessons = () => {
     isLoading,
     isError,
   } = useGetAllLessonsQuery(params.unity);
-  // const {
-  //   data: quizes,
-  //   isLoadingQuiz,
-  //   isErrorQuiz,
-  // } = useGetAllQuizesByUnitySlugQuery(params.unity);
   if (isLoading) {
     return <LessonsSkeleton />;
   }
-  if (isError) {
-    return <h1 className="text-3xl text-center font-bold my-5">Error</h1>;
+  if (isError){
+    return <h1 className="text-4xl text-center font-bold">خطاء في تحميل الفيديوهات</h1>
   }
   return (
     <Container>

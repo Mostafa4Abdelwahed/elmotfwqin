@@ -36,8 +36,8 @@ const Lesson = () => {
   if (isLoading) {
     return <LessonSkeleton />;
   }
-  if (isError) {
-    return <h1 className="text-4xl font-bold text-center py-7">Error</h1>
+  if (isError){
+    return <h1 className="text-4xl text-center font-bold">خطاء في تحميل الفيديو</h1>
   }
   return (
     <div className="pt-7 relative mx-auto">

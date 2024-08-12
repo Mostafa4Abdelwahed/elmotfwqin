@@ -362,299 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
-    description: Attribute.String & Attribute.Required & Attribute.Unique;
-    thumbnail: Attribute.Media<'images'> & Attribute.Required;
-    content: Attribute.RichText & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHistoryHistory extends Schema.CollectionType {
-  collectionName: 'histories';
-  info: {
-    singularName: 'history';
-    pluralName: 'histories';
-    displayName: 'history';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    video: Attribute.Relation<
-      'api::history.history',
-      'manyToOne',
-      'api::video.video'
-    >;
-    user: Attribute.Relation<
-      'api::history.history',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::history.history',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::history.history',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLanguageLanguage extends Schema.CollectionType {
-  collectionName: 'languages';
-  info: {
-    singularName: 'language';
-    pluralName: 'languages';
-    displayName: 'language';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    slug: Attribute.UID<'api::language.language', 'name'> & Attribute.Required;
-    unities: Attribute.Relation<
-      'api::language.language',
-      'oneToMany',
-      'api::unity.unity'
-    >;
-    secondary1: Attribute.Boolean & Attribute.Required;
-    secondary2: Attribute.Boolean & Attribute.Required;
-    secondary3: Attribute.Boolean & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::language.language',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::language.language',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLessonLesson extends Schema.CollectionType {
-  collectionName: 'lessons';
-  info: {
-    singularName: 'lesson';
-    pluralName: 'lessons';
-    displayName: 'lesson';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    videos: Attribute.Relation<
-      'api::lesson.lesson',
-      'oneToMany',
-      'api::video.video'
-    >;
-    unity: Attribute.Relation<
-      'api::lesson.lesson',
-      'manyToOne',
-      'api::unity.unity'
-    >;
-    slug: Attribute.UID<'api::lesson.lesson', 'title'> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::lesson.lesson',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::lesson.lesson',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiQuizQuiz extends Schema.CollectionType {
-  collectionName: 'quizzes';
-  info: {
-    singularName: 'quiz';
-    pluralName: 'quizzes';
-    displayName: 'quiz';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    synopsis: Attribute.Text & Attribute.Required;
-    quesionsCount: Attribute.String & Attribute.Required;
-    unity: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'api::unity.unity'>;
-    time: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<60>;
-    question: Attribute.Component<'q.question', true>;
-    users: Attribute.Relation<
-      'api::quiz.quiz',
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUnityUnity extends Schema.CollectionType {
-  collectionName: 'unities';
-  info: {
-    singularName: 'unity';
-    pluralName: 'unities';
-    displayName: 'unity';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    description: Attribute.String & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    quiz: Attribute.Relation<'api::unity.unity', 'oneToOne', 'api::quiz.quiz'>;
-    language: Attribute.Relation<
-      'api::unity.unity',
-      'manyToOne',
-      'api::language.language'
-    >;
-    secondary1: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    secondary2: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    secondary3: Attribute.Boolean;
-    lessons: Attribute.Relation<
-      'api::unity.unity',
-      'oneToMany',
-      'api::lesson.lesson'
-    >;
-    slug: Attribute.UID<'api::unity.unity', 'name'> & Attribute.Required;
-    term: Attribute.Enumeration<['term1', 'term2']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'term1'>;
-    users: Attribute.Relation<
-      'api::unity.unity',
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::unity.unity',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::unity.unity',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiVideoVideo extends Schema.CollectionType {
-  collectionName: 'videos';
-  info: {
-    singularName: 'video';
-    pluralName: 'videos';
-    displayName: 'video';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    VideoId: Attribute.String & Attribute.Required;
-    lesson: Attribute.Relation<
-      'api::video.video',
-      'manyToOne',
-      'api::lesson.lesson'
-    >;
-    teacherName: Attribute.String & Attribute.Required & Attribute.Unique;
-    histories: Attribute.Relation<
-      'api::video.video',
-      'oneToMany',
-      'api::history.history'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::video.video',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::video.video',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -1102,6 +809,344 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.String & Attribute.Required & Attribute.Unique;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHistoryHistory extends Schema.CollectionType {
+  collectionName: 'histories';
+  info: {
+    singularName: 'history';
+    pluralName: 'histories';
+    displayName: 'history';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    video: Attribute.Relation<
+      'api::history.history',
+      'manyToOne',
+      'api::video.video'
+    >;
+    user: Attribute.Relation<
+      'api::history.history',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::history.history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::history.history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLanguageLanguage extends Schema.CollectionType {
+  collectionName: 'languages';
+  info: {
+    singularName: 'language';
+    pluralName: 'languages';
+    displayName: 'language';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    slug: Attribute.UID<'api::language.language', 'name'> & Attribute.Required;
+    unities: Attribute.Relation<
+      'api::language.language',
+      'oneToMany',
+      'api::unity.unity'
+    >;
+    secondary1: Attribute.Boolean & Attribute.Required;
+    secondary2: Attribute.Boolean & Attribute.Required;
+    secondary3: Attribute.Boolean & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::language.language',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::language.language',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLessonLesson extends Schema.CollectionType {
+  collectionName: 'lessons';
+  info: {
+    singularName: 'lesson';
+    pluralName: 'lessons';
+    displayName: 'lesson';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    videos: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToMany',
+      'api::video.video'
+    >;
+    unity: Attribute.Relation<
+      'api::lesson.lesson',
+      'manyToOne',
+      'api::unity.unity'
+    >;
+    slug: Attribute.UID<'api::lesson.lesson', 'title'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiQuizQuiz extends Schema.CollectionType {
+  collectionName: 'quizzes';
+  info: {
+    singularName: 'quiz';
+    pluralName: 'quizzes';
+    displayName: 'quiz';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    synopsis: Attribute.Text & Attribute.Required;
+    quesionsCount: Attribute.String & Attribute.Required;
+    unity: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'api::unity.unity'>;
+    time: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<60>;
+    question: Attribute.Component<'q.question', true>;
+    users: Attribute.Relation<
+      'api::quiz.quiz',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestimonialTestimonial extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'testimonial';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    comment: Attribute.String & Attribute.Required;
+    level: Attribute.Enumeration<
+      ['secondary1', 'secondary2', 'secondary3', 'Another']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Another'>;
+    star: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 5;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUnityUnity extends Schema.CollectionType {
+  collectionName: 'unities';
+  info: {
+    singularName: 'unity';
+    pluralName: 'unities';
+    displayName: 'unity';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    quiz: Attribute.Relation<'api::unity.unity', 'oneToOne', 'api::quiz.quiz'>;
+    language: Attribute.Relation<
+      'api::unity.unity',
+      'manyToOne',
+      'api::language.language'
+    >;
+    secondary1: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    secondary2: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    secondary3: Attribute.Boolean;
+    lessons: Attribute.Relation<
+      'api::unity.unity',
+      'oneToMany',
+      'api::lesson.lesson'
+    >;
+    slug: Attribute.UID<'api::unity.unity', 'name'> & Attribute.Required;
+    term: Attribute.Enumeration<['term1', 'term2']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'term1'>;
+    users: Attribute.Relation<
+      'api::unity.unity',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::unity.unity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::unity.unity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVideoVideo extends Schema.CollectionType {
+  collectionName: 'videos';
+  info: {
+    singularName: 'video';
+    pluralName: 'videos';
+    displayName: 'video';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    VideoId: Attribute.String & Attribute.Required;
+    lesson: Attribute.Relation<
+      'api::video.video',
+      'manyToOne',
+      'api::lesson.lesson'
+    >;
+    teacherName: Attribute.String & Attribute.Required & Attribute.Unique;
+    histories: Attribute.Relation<
+      'api::video.video',
+      'oneToMany',
+      'api::history.history'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1112,13 +1157,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::article.article': ApiArticleArticle;
-      'api::history.history': ApiHistoryHistory;
-      'api::language.language': ApiLanguageLanguage;
-      'api::lesson.lesson': ApiLessonLesson;
-      'api::quiz.quiz': ApiQuizQuiz;
-      'api::unity.unity': ApiUnityUnity;
-      'api::video.video': ApiVideoVideo;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1127,6 +1165,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::article.article': ApiArticleArticle;
+      'api::history.history': ApiHistoryHistory;
+      'api::language.language': ApiLanguageLanguage;
+      'api::lesson.lesson': ApiLessonLesson;
+      'api::quiz.quiz': ApiQuizQuiz;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'api::unity.unity': ApiUnityUnity;
+      'api::video.video': ApiVideoVideo;
     }
   }
 }

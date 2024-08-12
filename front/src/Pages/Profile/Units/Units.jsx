@@ -12,13 +12,16 @@ const Units = () => {
   const params = useParams();
   const [isSuccess, setIsSuccess] = useState("");
   const {data:user} = useGetUserQuery();
-  const { data: unities, isLoading } = useGetAllUnitisQuery({
+  const { data: unities, isLoading, isError } = useGetAllUnitisQuery({
     year: "secondary1",
     lang: params.lang,
     term: user?.term,
   });
   if (isLoading) {
     return <UnitsSkeleton />;
+  }
+  if (isError){
+    return <h1 className="text-4xl text-center font-bold">خطاء في التحميل</h1>
   }
   return (
     <Container>

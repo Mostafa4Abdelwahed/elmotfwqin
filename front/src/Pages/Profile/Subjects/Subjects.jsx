@@ -11,8 +11,8 @@ const Subjects = () => {
   if (isLoading) {
     return <LanguagesSkeleton />;
   }
-  if (isError) {
-    return <h1 className="text-5xl text-center mt-16">Error</h1>
+  if (isError){
+    return <h1 className="text-4xl text-center font-bold">خطاء في التحميل</h1>
   }
   return (
     <Container>

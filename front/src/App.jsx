@@ -16,6 +16,7 @@ import Lesson from "./Pages/Profile/Lesson/Lesson";
 import Blog from "./Pages/Blog/BlogPage/Blog";
 import CookieService from "./Services/CookieService";
 import Article from "./Pages/Blog/Article/Article";
+import Error from "./Components/Error"
 
 function App() {
   const token = CookieService.get("jwt");
@@ -65,7 +66,7 @@ function App() {
             element={token ? <Settings /> : <Navigate to="/" />}
           />
         </Route>
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

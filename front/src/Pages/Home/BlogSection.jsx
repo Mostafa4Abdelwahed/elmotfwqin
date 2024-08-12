@@ -34,6 +34,9 @@ const BlogSection = () => {
       }
     ]
   };
+  if (isError){
+    return <h1 className="text-4xl text-center font-bold">خطاء في تحميل المقالات</h1>
+  }
   return (
     <div id="blog" className="bg-white pt-10 pb-20">
       <Container>

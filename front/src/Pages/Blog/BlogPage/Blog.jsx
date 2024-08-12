@@ -4,7 +4,7 @@ import { useGetAllArticlesQuery } from "../../../app/ApiCalls/articleSlice";
 import ArticleCard from "../../../Components/Blog/ArticleCard";
 import Container from "../../../Components/ui/container";
 import Header from "../../../Components/ui/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Blog = () => {
   const [page, setPage] = useState("1")
@@ -20,14 +20,17 @@ const Blog = () => {
     )
   }
   if (isError) {
-    return <h1 className="text-4xl font-bold text-center py-5">Error</h1>
+    return <h1 className="text-4xl font-bold text-center py-5">خطاء في تحميل البيانات</h1>
   }
+  useEffect(()=>{
+    window.scroll(0,0)
+  },[])
   return (
     <div className="py-2.5">
       <Container>
         <Header
           title="المقالات"
-          desc="المقالات المقالات المقالات المقالات المقالات المقالات"
+          desc="جميع مقالات المنصة"
         />
         <div className="grid grid-col-1 lg:grid-cols-3 gap-7 pb-7">
           {articles?.data?.map((article, key) => {

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetSingleArticleQuery } from "../../../app/ApiCalls/articleSlice";
 import ArticlePageSkeleton from "../../../Components/Skeletons/ArticlePageSkeleton";
 import { useEffect } from "react";
+import Error from "../../../Components/Error"
 
 const Article = () => {
   const params = useParams();
@@ -20,7 +21,7 @@ const Article = () => {
     return <ArticlePageSkeleton />;
   }
   if (isError) {
-    return <h1 className="text-5xl py-20 text-center font-bold">Error</h1>;
+    return <Error /> ;
   }
   return (
     <main className="py-px">

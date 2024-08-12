@@ -12,10 +12,13 @@ import { useState } from "react";
 
 const WatchLater = () => {
   const { data: user } = useGetUserQuery();
-  const { data, isLoading } = useGetFavouritesQuery();
+  const { data, isLoading, isError } = useGetFavouritesQuery();
   const [removeUnity, {isSuccess}] = useRemoveFromFavouriteMutation();
   if (isLoading) {
     return <UnitsSkeleton />;
+  }
+  if (isError){
+    return <h1 className="text-4xl text-center font-bold">خطاء في التحميل</h1>
   }
   return (
     <Container>
