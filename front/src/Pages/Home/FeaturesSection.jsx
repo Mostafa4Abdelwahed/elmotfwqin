@@ -14,7 +14,7 @@ const FeaturesSection = () => {
           </p>
           <h2 className="max-w-lg mb-2 text-3xl font-bold text-gray-900 sm:text-4xl md:mx-auto">
             مميزات منصة
-            <span className="font-bold animate-pulse text-primary translate-y-11">
+            <span className="font-bold mx-2 animate-pulse text-primary translate-y-11">
               المتفوقين
             </span>
           </h2>

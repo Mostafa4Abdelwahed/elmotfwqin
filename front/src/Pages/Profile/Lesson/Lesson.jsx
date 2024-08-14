@@ -51,7 +51,7 @@ const Lesson = () => {
         </Button>
           : 
         <Button colorScheme="green" onClick={addToHistoryhandler} className="mt-5 w-full">
-          تعلييم كمقروء
+          تعلييم كـ مسموع
         </Button>
         }
       </Container>

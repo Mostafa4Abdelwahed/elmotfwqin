@@ -74,7 +74,7 @@ const Navbar = () => {
                       className="text-gray-500 transition hover:text-primary"
                       href="#teachers"
                     >
-                      المدرسين
+                      التقييمات
                     </a>
                   </li>
                 </ul>
@@ -118,7 +118,7 @@ const Navbar = () => {
                       className="text-gray-500 transition hover:text-primary"
                       href="#teachers"
                     >
-                      المدرسين
+                      التقييمات
                     </a>
                   </li>
                 </ul>

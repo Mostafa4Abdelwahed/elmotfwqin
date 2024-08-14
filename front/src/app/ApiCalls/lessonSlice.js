@@ -32,7 +32,8 @@ export const lessonSlice = createApi({
                         Authorization: `Bearer ${CookieService.get("jwt")}`
                     }
                 }
-            }
+            },
+            providesTags: ["lesson"]
         }),
         addLessonToViews: builder.mutation({
             query: (args)=> ({

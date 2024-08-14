@@ -27,13 +27,14 @@ const login = () => {
             </h2>
             <form className="mt-8 space-y-4">
               <div>
-                <label className="text-gray-800 text-sm mb-2 block">
+                <label htmlFor="username" className="text-gray-800 text-sm mb-2 block">
                   الإيميل
                 </label>
                 <div className="relative flex items-center">
                   <input
                     value={user.email}
                     onChange={(e)=>{setUser({...user, identifier:e.target.value})}}
+                    id="username"
                     name="username"
                     type="text"
                     required
@@ -44,7 +45,7 @@ const login = () => {
               </div>
 
               <div>
-                <label className="text-gray-800 text-sm mb-2 block">
+                <label htmlFor="password" className="text-gray-800 text-sm mb-2 block">
                   الباسورد
                 </label>
                 <div className="relative flex items-center">
@@ -53,6 +54,7 @@ const login = () => {
                     onChange={(e)=>{setUser({...user, password:e.target.value})}}
                     name="password"
                     type="password"
+                    id="password"
                     required
                     className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-primary"
                     placeholder="اكتب الباسورد"
@@ -60,22 +62,11 @@ const login = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className="text-sm">
-                  <Link
-                    to="/forgot-password"
-                    className="text-primary hover:underline font-semibold"
-                  >
-                    نسيت كلمة السر ؟
-                  </Link>
-                </div>
-              </div>
-
               <div>
                 <Button onClick={handleSubmit} isLoading={loading} colorScheme="green" className="w-full py-6">تسجيل الدخول</Button>
               </div>
               <p className="text-gray-800 text-sm !mt-8 text-center">
-                معندكش حساب ؟
+                معندكش حساب؟
                 <Link
                   to="/register"
                   className="text-primary mx-2 hover:underline ml-1 whitespace-nowrap font-semibold"

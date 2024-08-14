@@ -31,11 +31,12 @@ const Register = () => {
       <form className="bg-white max-w-4xl mx-auto px-7 py-4 rounded-xl border-2 shadow-sm mb-14">
         <div className="grid sm:grid-cols-2 gap-8">
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
+            <label htmlFor="fullName" className="text-gray-800 text-sm mb-2 block">
               اسمك كامل
             </label>
             <input
-              name="lname"
+              name="fullName"
+              id="fullName"
               type="text"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
               placeholder="اكتب اسمك كامل"
@@ -46,12 +47,13 @@ const Register = () => {
 
           
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
+            <label htmlFor="username" className="text-gray-800 text-sm mb-2 block">
               اسم المستخدم
             </label>
             <input
               name="name"
               type="text"
+              id="username"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
               placeholder="اكتب اسم المستخدم"
               value={user.username}
@@ -61,10 +63,11 @@ const Register = () => {
 
 
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">ايميلك</label>
+            <label htmlFor="email" className="text-gray-800 text-sm mb-2 block">ايميلك</label>
             <input
               name="email"
               type="text"
+              id="email"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
               placeholder="اكتب ايميلك"
               value={user.email}
@@ -73,12 +76,13 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
+            <label htmlFor="phoneNumber" className="text-gray-800 text-sm mb-2 block">
               رقم تلفونك
             </label>
             <input
               name="number"
               type="text"
+              id="phoneNumber"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
               placeholder="اكتب رقم تلفونك"
               value={user.phoneNumber}
@@ -87,10 +91,11 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">الباسورد</label>
+            <label htmlFor="password" className="text-gray-800 text-sm mb-2 block">الباسورد</label>
             <input
               name="password"
               type="password"
+              id="password"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
               placeholder="اكتب الباسورد"
               value={user.password}
@@ -99,12 +104,13 @@ const Register = () => {
           </div>
           
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
+            <label htmlFor="rePassword" className="text-gray-800 text-sm mb-2 block">
               اكد الباسورد
             </label>
             <input
               name="cpassword"
               type="password"
+              id="rePassword"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
               placeholder="اكتب الباسورد تاني"
               value={user.cPassword}
@@ -113,10 +119,10 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
+            <label htmlFor="level" className="text-gray-800 text-sm mb-2 block">
               المرحلة الدراسية
             </label>
-            <select value={user.level} onChange={(e)=>{setUser({...user, level:e.target.value})}}
+            <select id="level" value={user.level} onChange={(e)=>{setUser({...user, level:e.target.value})}}
               name="level"
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
             >
@@ -130,10 +136,10 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
+            <label htmlFor="term" className="text-gray-800 text-sm mb-2 block">
               الفصل الدراسي
             </label>
-            <select
+            <select id="term"
               name="term" value={user.term} onChange={(e)=>{setUser({...user, term:e.target.value})}}
               className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-primary transition-all"
             >
@@ -146,15 +152,14 @@ const Register = () => {
           </div>
 
           <div>
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="text-sm">
+            <div className="flex items-center gap-2 text-sm">
+              <p>عندك حساب قبل كده؟</p>
                 <Link
                   to="/login"
                   className="text-primary hover:underline font-semibold"
                 >
-                  عندك حساب قبل كده؟
+                  تسجيل الدخول 
                 </Link>
-              </div>
             </div>
           </div>
         </div>
