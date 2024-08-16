@@ -2,7 +2,7 @@ const TestimonialCard = ({name, stars, level, comment}) => {
   return (
     <div
       dir="rtl"
-      className="swiper-slide flex flex-col justify-between gap-5 group mb-5 bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 mx-2 hover:border-primary slide-active:border-indigo-600"
+      className="swiper-slide flex flex-col justify-between gap-7 group mb-5 bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 mx-2 hover:border-primary slide-active:border-indigo-600"
     >
       <div className="flex items-center gap-2 text-amber-500 transition-all duration-500  group-hover:text-primary swiper-slide-active:text-indigo-600">
         {Array(stars)
@@ -23,7 +23,7 @@ const TestimonialCard = ({name, stars, level, comment}) => {
             );
           })}
       </div>
-      <p className="text-lg text-gray-500 leading-8 transition-all duration-500 mb-9 group-hover:text-gray-800">
+      <p className="text-lg text-gray-500 leading-8 transition-all duration-500 group-hover:text-gray-800">
         {comment}
       </p>
       <div className="flex items-center gap-5">
