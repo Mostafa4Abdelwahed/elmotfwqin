@@ -23,7 +23,7 @@ const TestimonialCard = ({name, stars, level, comment}) => {
             );
           })}
       </div>
-      <p className="text-lg text-gray-500 leading-8 h-24 transition-all duration-500 mb-9 group-hover:text-gray-800">
+      <p className="text-lg text-gray-500 leading-8 transition-all duration-500 mb-9 group-hover:text-gray-800">
         {comment}
       </p>
       <div className="flex items-center gap-5">
