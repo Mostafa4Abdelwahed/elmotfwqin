@@ -15,9 +15,7 @@ const UnityCard = ({ unity, setSuccess }) => {
     <div className="relative max-w-xs border border-solid border-gray-200 rounded-2xl transition-all duration-500 ">
       <div className="block overflow-hidden">
         <img
-          src={`${import.meta.env.VITE_SERVER_URL}${
-            unity?.attributes?.image?.data?.attributes?.url
-          }`}
+          src={unity?.attributes?.image?.data?.attributes?.url}
           alt="Card image"
           className="rounded-t-2xl mx-auto w-full"
         />
