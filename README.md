@@ -7,11 +7,7 @@ A web application, a platform for teaching all educational levels and solving te
 <img src="https://e.top4top.io/p_3132uei1e1.png" width="50%" />
 
 #  Images From App
-<img src="https://e.top4top.io/p_3154aknh71.png" width="40%" />
-<img src="https://f.top4top.io/p_3154x5he62.png" width="40%" />
-<img src="https://g.top4top.io/p_3154t48xy3.png" width="40%" />
-<img src="https://h.top4top.io/p_3154lz32e4.png" width="40%" />
-<img src="https://i.top4top.io/p_3154mp2ec5.png" width="40%" />
+<img src="https://e.top4top.io/p_3154nhxw61.png" width="100%" />
 
 
 # 🛠️ Tech stack 
