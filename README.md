@@ -6,7 +6,7 @@ A web application, a platform for teaching all educational levels and solving te
 
 <img src="https://e.top4top.io/p_3132uei1e1.png" width="50%" />
 
-#  Images From App
+#  Image From App
 <img src="https://e.top4top.io/p_3154nhxw61.png" width="100%" />
 
 
