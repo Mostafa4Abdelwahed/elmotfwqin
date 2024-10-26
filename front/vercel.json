@@ -12,7 +12,12 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dist": "/index.html"
+      "dest": "/index.html"
     }
-  ]
+  ],
+  "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/" }
+    ]
 }
