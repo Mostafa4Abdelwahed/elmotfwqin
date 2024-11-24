@@ -19,9 +19,7 @@ const LessonCard = ({ lesson }) => {
           <div>
             <img
               className="h-40 rounded w-full object-cover object-center"
-              src={`${import.meta.env.VITE_SERVER_URL}${
-                lesson?.attributes?.image?.data?.attributes?.url
-              }`}
+              src={lesson?.attributes?.image?.data?.attributes?.url}
               alt="thumbnail"
             />
           </div>

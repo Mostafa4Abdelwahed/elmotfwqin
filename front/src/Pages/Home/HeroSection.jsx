@@ -10,10 +10,10 @@ const HeroSection = () => {
       <div id="home" className="grid grid-cols-1 lg:grid-cols-2 gap-5 pt-5">
         <div className="content flex justify-center flex-col gap-5">
           <div className="text-start flex flex-col gap-4">
-            <h1 className="text-5xl font-bold text-center md:text-start">
+            <h1 className="text-5xl font-bold">
               أهلا بكم في منصة
             </h1>
-            <span className="text-5xl animate-pulse text-center md:text-start font-bold text-primary">
+            <span className="text-5xl animate-pulse font-bold text-primary">
               المتفوقين
             </span>
           </div>

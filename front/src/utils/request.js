@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const request = axios.create({
-    baseURL: "http://localhost:1337/api"
+    baseURL: "https://marked-dorothea-mostafa2-172a2e75.koyeb.app/api"
 })
 
 export default request

@@ -25,7 +25,7 @@ const Subjects = () => {
               return <Card
                   key={key}
                   title={language?.attributes?.name}
-                  thumbnail={`${import.meta.env.VITE_SERVER_URL}${language?.attributes?.image?.data?.attributes?.url}`}
+                  thumbnail={language?.attributes?.image?.data?.attributes?.url}
                   link={`${language?.attributes?.slug}/units`}
                 />
             })

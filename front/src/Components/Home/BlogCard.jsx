@@ -8,9 +8,7 @@ const BlogCard = ({ article }) => {
     >
       <img
         className="w-full h-48 object-cover"
-        src={`${import.meta.env.VITE_SERVER_URL}${
-          article?.attributes?.thumbnail?.data?.attributes?.url
-        }`}
+        src={article?.attributes?.thumbnail?.data?.attributes?.url}
         alt="thumbnail Blog"
       />
       <div className="p-6">
